@@ -4,6 +4,17 @@ PhysLLM is a multimodal remote physiological sensing pipeline that combines a ph
 
 This repository is the cleaned public release of the PhysLLM code path and its minimal training / inference pipeline.
 
+## Paper
+
+PhysLLM has been accepted to **ICLR 2026**.
+
+- Title: *PhysLLM: Harnessing Large Language Models for Cross-Modal Remote Physiological Sensing*
+- Paper: [arXiv:2505.03621](https://arxiv.org/abs/2505.03621)
+
+![PhysLLM architecture](assets/physllm_architecture_iclr2026.png)
+
+*Figure 2 from the ICLR 2026 paper: overall architecture of PhysLLM.*
+
 ## Release Scope
 
 Included in this repository:
@@ -21,19 +32,6 @@ Not included in this repository:
 - private or third-party checkpoints
 
 ## Model Overview
-
-```mermaid
-flowchart LR
-    A["Facial video clip<br/>(C x T x H x W)"] --> B["Video encoder<br/>PhysNet / PhysFormer / EfficientPhys / CLIP"]
-    A --> C["Face encoder<br/>FaceXFormer on the middle frame"]
-    A --> D["Environment encoder<br/>CLIP or static scene description"]
-    C --> E["Prompt builder"]
-    D --> E
-    B --> F["PhysLLM / NewPhysLLM<br/>LLM backbone + LoRA + projection head"]
-    E --> F
-    F --> G["Predicted rPPG waveform"]
-    G --> H["FFT / waveform evaluation"]
-```
 
 The public code path currently supports:
 
@@ -151,3 +149,18 @@ CUDA_VISIBLE_DEVICES=0 python main.py \
 - This release is intentionally narrow: it keeps the PhysLLM path and removes private workspace content.
 - The configs are examples, not drop-in commands for an arbitrary cluster.
 - Backup research files such as `beifen0.py` and `beifen1.py` are excluded from the public repository.
+
+## Citation
+
+If you find this repository useful, please cite:
+
+```bibtex
+@inproceedings{xie2026physllm,
+  title={PhysLLM: Harnessing Large Language Models for Cross-Modal Remote Physiological Sensing},
+  author={Xie, Yiping and Zhao, Bo and Dai, Mingtong and Zhou, Jian-Ping and Sun, Yue and Tan, Tao and Xie, Weicheng and Shen, Linlin and Yu, Zitong},
+  booktitle={International Conference on Learning Representations},
+  year={2026},
+  note={Published as a conference paper at ICLR 2026},
+  url={https://arxiv.org/abs/2505.03621}
+}
+```

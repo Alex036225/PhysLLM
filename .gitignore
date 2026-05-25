@@ -48,6 +48,10 @@ model_weight/
 *.jpeg
 *.pdf
 
+# Keep repository assets tracked
+!assets/
+!assets/*.png
+
 # Dataset caches and filelists generated locally
 DataFileLists/
 PreprocessedData/
