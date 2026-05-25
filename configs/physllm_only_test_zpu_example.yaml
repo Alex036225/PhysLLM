@@ -1,0 +1,41 @@
+BASE: ['']
+TOOLBOX_MODE: "only_test"
+
+TEST:
+  METRICS: ['MAE', 'RMSE', 'MAPE', 'Pearson', 'SNR']
+  DATA:
+    DATASET: MPUZPHRPPGST
+    DATA_PATH: "/path/to/zpu_or_zph_raw_data"
+    CACHED_PATH: "/path/to/zpu_or_zph_cache"
+    EXP_DATA_NAME: "ZPH_Chunk160_Det30"
+    FS: 30
+    DATA_FORMAT: NDCHW
+    BEGIN: 0.6
+    END: 0.8
+    PREPROCESS:
+      DATA_TYPE: ['Raw']
+      LABEL_TYPE: Standardized
+      DO_CHUNK: True
+      CHUNK_LENGTH: 160
+      RESIZE:
+        H: 72
+        W: 72
+
+MODEL:
+  NAME: PhysLLM
+  VIDEO_ENC: PhysNet
+  FACE_MODEL: FaceXFormer
+  ENV_MODEL: clip
+  LLM: BERT
+  MLLM: ""
+  CHECKPOINTS:
+    VIDEO_ENCODER: "/path/to/video_encoder_checkpoint.pth"
+    FACE_ENCODER: "/path/to/face_encoder_checkpoint.pt"
+
+INFERENCE:
+  MODEL_PATH: "/path/to/physllm_checkpoint.pth"
+  BATCH_SIZE: 8
+  EVALUATION_METHOD: FFT
+  EVALUATION_WINDOW:
+    USE_SMALLER_WINDOW: True
+    WINDOW_SIZE: 30

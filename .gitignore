@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Local tooling
+.codex/
+.DS_Store
+
+# Environments
+env/
+.venv/
+venv/
+
+# Artifacts
+log/
+logs/
+LOG/
+result/
+save/
+model_outputs/
+qwen_training_output/
+tsne_results/
+tsne_results_demo/
+saved_ubfc_chunks/
+video_labels/
+MDLLM-instruction/
+slurm_logs/
+
+# Weights and archives
+model_weight/
+*.pth
+*.pt
+*.ckpt
+*.tar
+*.tar.gz
+*.zip
+
+# Numpy / pickle / figures
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.png
+*.jpg
+*.jpeg
+*.pdf
+
+# Dataset caches and filelists generated locally
+DataFileLists/
+PreprocessedData/
